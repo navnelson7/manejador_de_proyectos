@@ -1,13 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 const Login = () => {
-    const onChange = () => {
+    //state para iniciar sesion
+    const [usuario, guardarUsuario] = useState({
+        email: '',
+        password: ''
+    });
+    //extraer del usuario email y password
+    const {email, password} = usuario;
+
+    const onChange = e => {
+        guardarUsuario({
+            ...usuario,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    //cuando el usuario inicia sesion
+    const onSubmit =  e => {
+        e.preventDefault();
+        //validar que no hayan campos vacios
+
+        //pasar a la accion
 
     }
     return ( 
         <div className="form-usuario">
             <div className="contenedor-form sombra-dark">
                 <h1>Iniciar Sesion</h1>
-                <fom>
+                <fom
+                    onSubmit={onSubmit}
+                >
                     <div className="campo-form">
                         <label htmlFor="email">Email</label>
                         <input 
@@ -15,6 +38,7 @@ const Login = () => {
                             id="email"
                             name="email"
                             placeholder="Tu E-mail"
+                            value={email}
                             onChange={onChange}
                         />
                     </div>
@@ -25,6 +49,7 @@ const Login = () => {
                             id="password"
                             name="password"
                             placeholder="password"
+                            value={password}
                             onChange={onChange}
                         />
                     </div>
@@ -36,6 +61,9 @@ const Login = () => {
                         />
                     </div>
                 </fom>
+                <Link to="nueva-cuenta" className="enlace-cuenta">
+                    Obtener Cuenta
+                </Link>
             </div>
         </div>
      );
