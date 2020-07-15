@@ -15,10 +15,16 @@ const ListadoTareas = () => {
                     ? (<li className="tarea"><p>No hay Tareas</p></li>)
 
                     : tareasProyectos.map(tarea => (
-                        <Tarea />
+                        <Tarea 
+                            tarea={tarea}
+                        />
                     ))
                 }
             </ul>
+            <button
+                type="button"
+
+            >Eliminar Proyecto &times;</button>
         </Fragment>
     );
 }
