@@ -4,7 +4,7 @@ const NuevoProyecto = () => {
     //obtener el state del context
     const proyectosContext = useContext(proyectoContext);
 
-    const { formulario } =  proyectosContext;
+    const { formulario, mostrarFormulario } =  proyectosContext;
     //state proyecto 
     const [proyecto, guardarProyecto] = useState({
         nombre:''
@@ -38,6 +38,7 @@ const NuevoProyecto = () => {
             <button 
             type="button"
             className="btn btn-block btn-primario"
+            onClick = {() => mostrarFormulario()}
         > Nuevo Proyecto</button>
         {
             formulario
