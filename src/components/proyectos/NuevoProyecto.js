@@ -33,6 +33,10 @@ const NuevoProyecto = () => {
         agregarProyecto(proyecto);
 
         //reiniciar el form 
+        guardarProyecto({
+            nombre: ''
+        })
+
     }
     return ( 
         <Fragment>
