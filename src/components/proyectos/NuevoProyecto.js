@@ -33,15 +33,6 @@ const NuevoProyecto = () => {
         agregarProyecto(proyecto);
 
         //reiniciar el form 
-        guardarProyecto({
-            nombre: ''
-        })
-
-        //Mostrar Formulario
-        const onClickFormulario = () => {
-            mostrarFormulario();
-        }
-
     }
     return ( 
         <Fragment>
