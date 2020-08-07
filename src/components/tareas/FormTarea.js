@@ -9,9 +9,28 @@ const FormTArea = () => {
     
     //array desctructuring para extraer proyecto actual
     const [proyectoActual] = proyecto;
+    
+    
+    const onSubmit = e => {
+        e.preventDefault();
+
+
+        //validar
+
+
+        //pasar la validacion
+
+
+
+        // agregar la nueva tarea
+    }
+
+
     return ( 
         <div className="formulario">
-            <form>
+            <form
+                onSubmit={onSubmit}
+            >
                 <div className="contenedor-input">
                     <input 
                         type="text"
