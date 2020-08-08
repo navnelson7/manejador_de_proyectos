@@ -7,3 +7,7 @@ Este proeycto ha sido creado con: [Create React App](https://github.com/facebook
 
 Puedes ejecutar está app despues de clonarla.<br />
 Abriendo [http://localhost:3000](http://localhost:3000) para verlo en el navegador.
+
+### Librerias utilizadas
+* react-transition-group [https://www.npmjs.com/package/react-transition-group](react-transition-group)
+* `npm i react-transition-group` para instalarla.
