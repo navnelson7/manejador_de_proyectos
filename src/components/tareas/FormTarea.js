@@ -9,7 +9,7 @@ const FormTArea = () => {
 
     //obtener la funcion del context de tarea
     const tareasContext = useContext(tareaContext);
-    const { tareaseleccionada, errortarea, agregarTarea, validarTarea, obtenerTareas, actualizarTarea } = tareasContext;
+    const { tareaseleccionada, errortarea, agregarTarea, validarTarea, obtenerTareas, actualizarTarea, limpiarTarea } = tareasContext;
 
 
     //effect que detecta si hay una tarea seleccionada
@@ -66,6 +66,9 @@ const FormTArea = () => {
         }else{
             //actualizar tarea existente
             actualizarTarea(tarea);
+
+            //elimina  atareaselecionad del state
+            limpiarTarea();
         }
 
 
