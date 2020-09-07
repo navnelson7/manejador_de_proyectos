@@ -22,8 +22,8 @@
              setTimeout(() => {
                  dispatch({
                      type: OCULTAR_ALERTA
-                 }, 5000);
-             })
+                 })
+                }, 5000);
          }
 
          return ( 
