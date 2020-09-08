@@ -53,7 +53,7 @@ const NuevaCuenta = () => {
             nombre,
             email,
             password
-        })
+        });
 
     }
     return ( 

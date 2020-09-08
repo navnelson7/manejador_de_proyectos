@@ -21,6 +21,22 @@ const AuthState = props => {
 
     const [state, dispatch] = useReducer(AuthReducer, initialState);
     //funciones
+    const registrarUsuario = async  datos =>{
+        try {
+           const respuesta = await clienteAxios.post('/api/usuarios',datos);
+           console.log(respuesta);
+
+           dispatch({
+               type: REGISTRO_EXITOSO
+           })
+
+        } catch (error) {
+            console.log(error);
+            dispatch({
+                type: REGISTRO_ERROR
+            })
+        }
+    }
 
     return (
         <AuthContext.Provider
@@ -28,7 +44,8 @@ const AuthState = props => {
             token: state.token,
             autenticado: state.autenticado,
             usuario: state.usuario,
-            mensaje: state.mensaje 
+            mensaje: state.mensaje,
+            registrarUsuario
          }}
         >
             {props.children}
