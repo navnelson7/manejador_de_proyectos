@@ -24,10 +24,11 @@ const AuthState = props => {
     const registrarUsuario = async  datos =>{
         try {
            const respuesta = await clienteAxios.post('/api/usuarios',datos);
-           console.log(respuesta);
+           console.log(respuesta.data);
 
            dispatch({
-               type: REGISTRO_EXITOSO
+               type: REGISTRO_EXITOSO,
+               payload: respuesta.data
            })
 
         } catch (error) {

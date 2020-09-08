@@ -10,7 +10,7 @@ import {
 export default (state, action) => {
     switch (action.type) {
          case REGISTRO_EXITOSO:
-             localStorage.setItem('toke', action.payload.token);
+             localStorage.setItem('token', action.payload.token);
              return {
                  ...state,
                  autenticado: true,
