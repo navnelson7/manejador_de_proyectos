@@ -4,7 +4,8 @@ import AuthReducer from './authReducer';
 import clienteAxios from '../../config/axios';
 import {
     REGISTRO_EXITOSO,
-    REGISTRO_ERROR
+    REGISTRO_ERROR,
+    LOGIN_ERROR
     // OBTENER_USUARIO,
     // LOGIN_EXITOSO,
     // LOGIN_ERROR,
@@ -21,15 +22,17 @@ const AuthState = props => {
 
     const [state, dispatch] = useReducer(AuthReducer, initialState);
     //funciones
-    const registrarUsuario = async  datos =>{
+    const registrarUsuario = async datos => {
         try {
-           const respuesta = await clienteAxios.post('/api/usuarios',datos);
-           console.log(respuesta.data);
+            const respuesta = await clienteAxios.post('/api/usuarios', datos);
+            console.log(respuesta.data);
 
-           dispatch({
-               type: REGISTRO_EXITOSO,
-               payload: respuesta.data
-           })
+            dispatch({
+                type: REGISTRO_EXITOSO,
+                payload: respuesta.data
+            });
+            //obtener el usuario
+            usuarioAutenticado();
 
         } catch (error) {
             //console.log(error.response.data.msg);
@@ -44,18 +47,34 @@ const AuthState = props => {
         }
     }
 
-    return (
-        <AuthContext.Provider
-         value={{
-            token: state.token,
-            autenticado: state.autenticado,
-            usuario: state.usuario,
-            mensaje: state.mensaje,
-            registrarUsuario
-         }}
-        >
-            {props.children}
-        </AuthContext.Provider>
+    //retorna  el usuario autenticado
+    const usuarioAutenticado = async() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            //funcion para enviar el token por header
+        }
+        try {
+            const respuesta = await clienteAxios.get('/api/auth');
+            console.log(respuesta);
+        } catch (error) {
+            dispatch({
+                type: LOGIN_ERROR
+            })
+
+        }
+    }
+
+    return ( <
+        AuthContext.Provider value = {
+            {
+                token: state.token,
+                autenticado: state.autenticado,
+                usuario: state.usuario,
+                mensaje: state.mensaje,
+                registrarUsuario
+            }
+        } > { props.children } <
+        /AuthContext.Provider>
 
     )
 }
