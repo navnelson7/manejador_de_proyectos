@@ -2,10 +2,12 @@ import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
 import clienteAxios from '../../config/axios';
+import tokenAuth from '../../config/token';
 import {
     REGISTRO_EXITOSO,
     REGISTRO_ERROR,
-    LOGIN_ERROR
+    LOGIN_ERROR,
+    OBTENER_USUARIO
     // OBTENER_USUARIO,
     // LOGIN_EXITOSO,
     // LOGIN_ERROR,
@@ -52,11 +54,16 @@ const AuthState = props => {
         const token = localStorage.getItem('token');
         if (token) {
             //funcion para enviar el token por header
+            tokenAuth(token);
         }
         try {
             const respuesta = await clienteAxios.get('/api/auth');
-            console.log(respuesta);
+            dispatch({
+                type: OBTENER_USUARIO,
+                payload: respuesta.data
+            })
         } catch (error) {
+            console.log(error.response);
             dispatch({
                 type: LOGIN_ERROR
             })
