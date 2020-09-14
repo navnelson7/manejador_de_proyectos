@@ -32,7 +32,7 @@ const AuthState = props => {
             dispatch({
                 type: REGISTRO_EXITOSO,
                 payload: respuesta.data
-            });
+            }); 
             //obtener el usuario
             usuarioAutenticado();
 
@@ -52,12 +52,13 @@ const AuthState = props => {
     //retorna  el usuario autenticado
     const usuarioAutenticado = async() => {
         const token = localStorage.getItem('token');
-        if (token) {
+        if(token) {
             //funcion para enviar el token por header
             tokenAuth(token);
         }
         try {
             const respuesta = await clienteAxios.get('/api/auth');
+            console.log(respuesta);
             dispatch({
                 type: OBTENER_USUARIO,
                 payload: respuesta.data
@@ -71,8 +72,8 @@ const AuthState = props => {
         }
     }
 
-    return ( <
-        AuthContext.Provider value = {
+    return ( 
+        <AuthContext.Provider value = {
             {
                 token: state.token,
                 autenticado: state.autenticado,
@@ -80,8 +81,8 @@ const AuthState = props => {
                 mensaje: state.mensaje,
                 registrarUsuario
             }
-        } > { props.children } <
-        /AuthContext.Provider>
+        } > { props.children } 
+        </AuthContext.Provider>
 
     )
 }

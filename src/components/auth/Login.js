@@ -28,7 +28,7 @@ const Login = () => {
         <div className="form-usuario">
             <div className="contenedor-form sombra-dark">
                 <h1>Iniciar Sesion</h1>
-                <fom
+                <form
                     onSubmit={onSubmit}
                 >
                     <div className="campo-form">
@@ -60,7 +60,7 @@ const Login = () => {
                             value="Iniciar Sesion"
                         />
                     </div>
-                </fom>
+                </form>
                 <Link to="nueva-cuenta" className="enlace-cuenta">
                     Obtener Cuenta
                 </Link>
